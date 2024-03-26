@@ -31,8 +31,19 @@ def jogar():
 
     repost = requests.get(url_personagem)
     personagem = repost.json()
+    
+    resultado = {}
+    
+    resultado["afiliacao"] = personagem["affiliation"]
+    resultado["genero"] = personagem["gender"]
+    resultado["imagem"] = personagem["image"]
+    resultado["nome"] = personagem["name"]
+    resultado["raca"] = personagem["race"]
 
-    return jsonify(personagem)
+    planeta_origem = personagem["originPlanet"]
+    resultado["planeta"] = planeta_origem["name"] if planeta_origem else None
+
+    return jsonify(resultado)
 
 if __name__ == '__main__':
   app.run(port=5000, host='localhost', debug=True)
