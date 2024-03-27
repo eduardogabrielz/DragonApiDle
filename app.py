@@ -1,6 +1,9 @@
 from flask import Flask, jsonify, request
 import requests
 import random
+from translations import *
+from choose import choose
+
 
 character = ['Goku', "vegeta", "Piccolo", "Bulma", "Freezer", "Zarbon", "Dodoria", 'Ginyu', "Celula", 'Gohan', "Krillin",
              "Tenshinhan", "Yamcha", "Chi-Chi", "Gotenks", "Trunks", "Master Roshi", "Bardock", "Launch", "Mr. Satan",
@@ -10,36 +13,6 @@ character = ['Goku', "vegeta", "Piccolo", "Bulma", "Freezer", "Zarbon", "Dodoria
              "Gogeta", "Vegetto", "Janemba", "Broly", "Kaio del Sur", "Kaio del este", "Kaio del Oeste", "Gran Kaio",
              "Kaio-shin del Este", "Kaio-shin del Norte", "Kaio-shin del Sur", "Kaio-shin del Oeste", "Gran Kaio-shin",
              "Kibito"]
-
-translation_planets = {
-    "Tierra" : "Terra",
-    "Planeta de Bills " : "Planeta do Bills",
-    "Nucleo del Mundo" : "Núcleo do Mundo",
-    "Planeta del Gran Kaio" : "Planeta do Grande Senhor Kaio",
-    "Freezer No. 79" : "Planeta Freeza 79",
-    "Otro Mundo" : "Outro Mundo",
-    "Kaiō del Norte" : "Planeta do Senhor Kaioh",
-    "Planeta sagrad": "Planeta Sagrado de Kaiohshin",
-}
-
-translation_genders = {
-    "Male" : "Homen",
-    "Female" : "Mulher",  
-}
-
-translation_race = {
-    "God" : "Deus",
-    "Saiyan" : "Saiyajin",
-    "Angel" : "Anjo",
-    "Nucleico" : "Shin-jin",
-    "Evil" : "Demonio",
-    "Namekian" : "Namekuseijin",
-    "Human" : "Humano",
-    "Frieza Race" : "Raça do Freeza",
-    "Unknown" : "Desconhecido",
-    "Jiren Race" : "Humanoide",
-    "Nucleico benigno" : "Shin-jin"
-}
 
 
 app = Flask(__name__)
@@ -59,21 +32,12 @@ def jogar():
 
     url_character = base_url + str(random_number)
 
-    repost = requests.get(url_character)
-    characters = repost.json()
+    content = requests.get(url_character)
+    character_data = content.json()
     
-    result_character = {}
-    
-    result_character["afiliação"] = characters["affiliation"]
-    result_character["genero"] = characters["gender"]
-    result_character["imagem"] = characters["image"]
-    result_character["nome"] = characters["name"]
-    result_character["raça"] = characters["race"]
+    data_json_character= translate_character(choose(character_data))
 
-    origin_planet = characters["originPlanet"]
-    result_character["planeta"] = origin_planet["name"] if origin_planet else None
-
-    return jsonify(result_character)
+    return jsonify(data_json_character)
 
 if __name__ == '__main__':
   app.run(port=5000, host='localhost', debug=True)
