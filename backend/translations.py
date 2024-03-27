@@ -2,7 +2,7 @@ translation_planets = {
     "Tierra" : "Terra",
     "Planeta de Bills " : "Planeta do Bills",
     "Nucleo del Mundo" : "Núcleo do Mundo",
-    "Planeta del Gran Kaio" : "Planeta do Supremo Senhor Kaio",
+    "Planeta del Gran Kaio" : "Planeta do Grande Senhor Kaio",
     "Freezer No. 79" : "Planeta Freeza 79",
     "Otro Mundo" : "Outro Mundo",
     "Kaiō del Norte" : "Planeta do Senhor Kaioh",
@@ -50,12 +50,12 @@ translation_names = {
     "Kaio del Sur" : "Kaioh do Sul",
     "Kaio del este" : "Kaioh do Leste",
     "Kaio del Oeste" : "Kaioh do Oeste",
-    "Gran Kaio" : "Supremo Kaioh",
+    "Gran Kaio" : "Grande Kaioh",
     "Kaio-shin del Este" : "Kaiohshin do Leste",
     "Kaio-shin del Norte" : "Kaiohshin do Norte",
     "Kaio-shin del Sur" : "Kaiohshin do Sul",
     "Kaio-shin del Oeste" : "Kaioshin do Oeste",
-    "Gran Kaio-shin" : "Supremo Kaioshin"
+    "Gran Kaio-shin" : "Grande Kaioshin"
 }
 
 def translate_character(character):
