@@ -6,3 +6,35 @@
     list-style: none;
     box-sizing: border-box;
 }
+
+header {
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    background-image: url(images/kame_house.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.cards_container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.card_content{
+    cursor: pointer;
+    margin: .4rem 0;
+}
+
+#cards:hover{
+    transform: scale(1.1);
+    transition: transform 0.1s ease-in-out;
+    transition-timing-function: linear;
+}
