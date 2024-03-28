@@ -1,14 +1,3 @@
-translation_planets = {
-    "Tierra" : "Terra",
-    "Planeta de Bills " : "Planeta do Bills",
-    "Nucleo del Mundo" : "Núcleo do Mundo",
-    "Planeta del Gran Kaio" : "Planeta do Grande Senhor Kaio",
-    "Freezer No. 79" : "Planeta Freeza 79",
-    "Otro Mundo" : "Outro Mundo",
-    "Kaiō del Norte" : "Planeta do Senhor Kaioh",
-    "Planeta sagrad": "Planeta Sagrado de Kaiohshin",
-}
-
 translation_genders = {
     "Male" : "Homen",
     "Female" : "Mulher",  
@@ -65,8 +54,6 @@ def translate_character(character):
   translated["genero"] = translation_genders.get(character["genero"], character["genero"])
   translated["raça"] = translation_races.get(character["raça"], character["raça"])
   translated["afiliação"] = translation_affiliations.get(character["afiliação"], character["afiliação"])
-  planet = character["planeta"]
-  translated["planeta"] = translation_planets.get(planet, planet)
   translated["imagem"] = character["imagem"]
   
   return translated
