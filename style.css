@@ -146,7 +146,7 @@ section {
     height: 40px;
 }
 
-.guess_character{
+.guess_character {
     font-family: "DragonBall";
     font-size: 18px;
     display: inline-block;
@@ -210,4 +210,24 @@ section {
     justify-content: center;
     height: 80px;
     letter-spacing: 0.4px;
+}
+
+#suggestions {
+    background-color:#ffffff;
+    color: #000000;
+    font-family: 'Secular One';
+    text-align: center;
+    width: 280px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    position: absolute;
+    top: 40px;
+    z-index: 1;
+}
+
+.mini_game {
+    position: relative;
 }

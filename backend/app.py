@@ -14,7 +14,7 @@ character = ['Goku', "vegeta", "Piccolo", "Bulma", "Freezer", "Zarbon", "Dodoria
              "Kibito"]
 
 app = Flask(__name__)
-
+    
 @app.route('/jogar', methods=['GET'])
 def jogar():
     

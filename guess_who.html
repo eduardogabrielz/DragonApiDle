@@ -19,7 +19,7 @@
     <div class="helper">
       <div>
         <p id="content_information">
-          <span style="border: solid 2px red;" class="red_span"> </span>
+          <span style="border: solid 3px #ff0000;" class="red_span"> </span>
           <span style="margin-left : 3px;">
             Vermelho:
             <b>"Nenhuma"</b>
@@ -29,29 +29,29 @@
       </div>
       <div>
         <p id="content_information">
-          <span style="border: solid 2px green;" class="green_span"> </span>
+          <span style="border: solid 3px #38c418;" class="green_span"> </span>
           <span style="margin-left : 3px;">
             Verde:
             <b>"TODAS"</b>
             as pistas combinam"
           </span>
         </p>
-      </div>
+      </div>  
     </div>
   </section>
 
   <div class="mini_game">
-    <div style="display: flex;flex-wrap: wrap;justify-content: space-around;"">
-        <div class=" button-container">
-      <input type="text" name="search" placeholder="🐉 Digite um Personagem" id="searchBox">
-      <div id="suggestions"></div>
+    <div id="suggestions"></div>
+    <div style="display: flex;flex-wrap: wrap;justify-content: space-around;">
+      <div class=" button-container">
+        <input type="text" name="search" placeholder="  🐉 Digite um Personagem " id="searchBox">
+      </div>
+      <div class="button-container">
+        <button type="button" id="guess" name="GUESS" class="guess_character">
+          Adivinhar!
+        </button>
+      </div>
     </div>
-    <div class="button-container">
-      <button type="button" id="guess" name="GUESS" class="guess_character">
-        Adivinhar!
-      </button>
-    </div>
-  </div>
   </div>
 
   <div class="header_content_characteristics">
