@@ -40,16 +40,20 @@
     </div>
   </section>
 
+
   <div class="mini_game">
-    <div id="suggestions"></div>
-    <div style="display: flex;flex-wrap: wrap;justify-content: space-around;">
-      <div class=" button-container">
-        <input type="text" name="search" placeholder="  🐉 Digite um Personagem " id="searchBox">
+    <div class="grid">
+      <div style="display: flex;flex-wrap: wrap;justify-content: space-around;">
+        <div class=" button-container">
+          <input type="text" placeholder="🐉 Digite um Personagem " id="searchBox" autocomplete="off">
+        </div>
+        <div class="button-container">
+          <button type="button" id="guess" name="GUESS" class="guess_character">
+            Adivinhar!
+          </button>
+        </div>
       </div>
-      <div class="button-container">
-        <button type="button" id="guess" name="GUESS" class="guess_character">
-          Adivinhar!
-        </button>
+      <div class="result_box">
       </div>
     </div>
   </div>

@@ -7,39 +7,34 @@ const characters = ['Goku', "Vegeta", "Piccolo", "Bulma", "Freeza", "Zarbon", "D
   "Kaioshin do Leste", "Kaioshin do Norte", "Kaioshin do Sul", "Kaioshin do Oeste", "Grande Kaioshin",
   "Kibito"];
 
-const searchBox = document.getElementById('searchBox');
-const suggestions = document.getElementById('suggestions');
-let isFocused = false;
-const MAX_SUGGESTIONS = 10;
-    
-searchBox.addEventListener('focus', () => {
-  isFocused = true;
-});
+const resultBox = document.querySelector(".result_box")
+const inputBox = document.getElementById("searchBox")
 
-searchBox.addEventListener('blur', () => {
-  isFocused = false;
-  suggestions.innerHTML = '';
-});
-
-searchBox.addEventListener('input', () => {
-  if (isFocused) {
-    const filterText = searchBox.value.toLowerCase().trim();
-
-    if (filterText !== '') {
-      const filteredCharacters = characters.filter(character => character.toLowerCase().includes(filterText));
-
-      suggestions.innerHTML = '';
-
-      // Limit the number of displayed suggestions
-      for (let i = 0; i < Math.min(filteredCharacters.length, MAX_SUGGESTIONS); i++) {
-        const character = filteredCharacters[i];
-        const suggestionElement = document.createElement('div');
-        suggestionElement.classList.add('suggestion');
-        suggestionElement.textContent = character;
-        suggestions.appendChild(suggestionElement);
-      }
-    } else {
-      suggestions.innerHTML = '';
-    }
+inputBox.onkeyup = function () {
+  let result = []
+  let input = inputBox.value;
+  if (input.length) {
+    result = characters.filter((keyword) => {
+      return keyword.toLowerCase().includes(input.toLowerCase());
+    });
+    console.log(result)
   }
-});
+  display(result);
+
+  if(!result.length){
+    resultBox.innerHTML = "";
+  }
+}
+
+function display(result){
+  const content = result.map((list)=>{
+    return "<li onclick=selectInput(this)>" + list + "</li>";
+  });
+
+  resultBox.innerHTML = "<ul>" + content.join('') + "</ul>"
+}
+
+function selectInput(list){
+  inputBox.value = list.innerHTML;
+  resultBox.innerHTML = "";
+}

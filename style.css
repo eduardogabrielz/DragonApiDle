@@ -133,6 +133,20 @@ section {
     display: flex !important;
     align-items: center !important;
     flex-direction: column;
+    display: 1;
+}
+
+.grid {
+    margin: 0 auto;
+    padding: 10px;
+    width: 400px;
+    background-color: #ffffff;
+    border: 3px solid #000000;
+    border-radius: 4px;
+}
+
+::placeholder{
+    color: #555;
 }
 
 .button-container {
@@ -142,7 +156,7 @@ section {
 #searchBox {
     border-radius: 5px;
     margin-right: 3px;
-    width: 208px;
+    width: 220px;
     height: 40px;
 }
 
@@ -157,6 +171,29 @@ section {
     background: #0f0874;
     color: #ffffff;
     width: 120px;
+}
+
+input{
+    flex: 1;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.result_box ul {
+    padding: 15px 10px;
+}
+
+.result_box ul li {
+    list-style: none;
+    border-radius: 3px;
+    padding: 15px 10px;
+    cursor: pointer;
+    &:hover{
+        background: #e9f3ff;
+    }
 }
 
 .header_content_characteristics {
@@ -181,6 +218,7 @@ section {
     text-align: center;
     font-family: "Secular OneDragonBall";
     color: #0f0874;
+    text-shadow: 2px -2px #ffffff;
 }
 
 .response_line {
@@ -212,7 +250,7 @@ section {
     letter-spacing: 0.4px;
 }
 
-#suggestions {
+#filter_character {
     background-color:#ffffff;
     color: #000000;
     font-family: 'Secular One';
