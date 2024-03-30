@@ -23,7 +23,7 @@
 
 header {
     margin-top: 8px;
-    display: flex;
+    display: none;
     justify-content: center;
 }
 
@@ -92,8 +92,13 @@ section {
     justify-content: center
 }
 
+.mini_game {
+    position: relative;
+}
+
 .how_to_play {
     margin-top: 10px;
+    border-radius: 10px;
     background-color: #000000;
     border: 1px solid #ffffff;
 }
@@ -113,6 +118,7 @@ section {
 }
 
 .x {
+    cursor: pointer;
     color: white;
     font-size: 16px;
     display: flex;
@@ -128,6 +134,7 @@ section {
 }
 
 .helper {
+    border-radius: 10px;
     margin-top: 20px;
     display: flex;
     flex-direction: row;
@@ -137,8 +144,7 @@ section {
     column-gap: 5px;
     padding: 8px;
     max-width: 600px;
-    font-size: 12px;
-    background: black;
+    background-color: black;
     color: white;
     line-height: 1.9;
     font-family: "Secular One";
@@ -161,40 +167,33 @@ section {
     width: 140px;
 }
 
-.mini_game {
-    margin-top: 24px;
-    display: flex !important;
-    align-items: center !important;
-    flex-direction: column;
-    display: 1;
-}
-
-.grid {
-    margin: 0 auto;
-    padding: 10px;
+.search_box{
+    display: none;
     width: 400px;
-    background-color: #ffffff;
-    border: 3px solid #000000;
-    border-radius: 4px;
-}
-
-::placeholder {
-    color: #555;
-}
-
-.button-container {
-    display: inline-flex;
-}
-
-#searchBox {
+    background: #fff;
+    margin: 20px auto 0;
     border-radius: 5px;
-    margin-right: 3px;
-    width: 220px;
-    height: 40px;
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+input {
+    flex: 1;
+    height: 50px;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    font-size: 18px;
+    color: #333;
 }
 
 .guess_character {
     font-family: "DragonBall";
+    border-radius: 4px;
     font-size: 18px;
     display: inline-block;
     line-height: 1.5px;
@@ -203,16 +202,13 @@ section {
     cursor: pointer;
     background: #0f0874;
     color: #ffffff;
-    width: 120px;
+    height: 40px;
+    width: 80px;
 }
 
-input {
-    flex: 1;
-    background: transparent;
-    border: 0;
-    outline: 0;
-    font-size: 18px;
-    color: #333;
+.result_box{
+    max-height: 300px;
+    overflow: auto;
 }
 
 .result_box ul {
@@ -224,14 +220,13 @@ input {
     border-radius: 3px;
     padding: 15px 10px;
     cursor: pointer;
-
     &:hover {
         background: #e9f3ff;
     }
 }
 
 .header_content_characteristics {
-    display: flex;
+    display: none;
     margin-top: 15px;
     flex-wrap: nowrap;
     justify-content: center;
@@ -256,7 +251,7 @@ input {
 }
 
 .response_line {
-    display: flex;
+    display: none;
     flex-wrap: nowrap;
     justify-content: center;
     column-gap: 16px;
@@ -264,17 +259,18 @@ input {
 }
 
 .individual_response_line {
+    background-color: #333;
     margin: 0px 10px 0px 10px;
     position: relative;
     flex-basis: calc(12.5% - 4px);
     margin: 2px;
-    border: 1px solid hsla(0, 0%, 100%, .59);
+    border: 1px solid #ffffff;
     box-sizing: border-box;
     min-width: 70px;
     font-size: 0.8em;
     text-shadow: 1px 1px 4px black;
     font-weight: 650 !important;
-    border-radius: 0.25rem !important;
+    border-radius: 8px !important;
     white-space: pre;
     box-shadow: inset 0 0 5px #000000;
     display: flex;
@@ -284,22 +280,13 @@ input {
     letter-spacing: 0.4px;
 }
 
-#filter_character {
-    background-color: #ffffff;
-    color: #000000;
-    font-family: 'Secular One';
-    text-align: center;
-    width: 280px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-    position: absolute;
-    top: 40px;
-    z-index: 1;
+.image_character {
+    height: 100%;
+    width: 60%;
 }
 
-.mini_game {
-    position: relative;
+.tip_character{
+    color: #ffffff;
+    font-size: 12px;
+    font-family: "Secular One";
 }

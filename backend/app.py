@@ -3,21 +3,12 @@ from flask_cors import CORS
 import requests
 import random
 from translations import *
-from choose import choose
-
-character = ['Goku', "vegeta", "Piccolo", "Bulma", "Freezer", "Zarbon", "Dodoria", 'Ginyu', "Celula", 'Gohan', "Krillin",
-             "Tenshinhan", "Yamcha", "Chi-Chi", "Gotenks", "Trunks", "Master Roshi", "Bardock", "Launch", "Mr. Satan",
-             "Dende", "Android 17", "Android 16", "Android 19", "Android 20 (Dr. Gero)", "Android 13", "Android 14",
-             "Android 15", "Nail", "Raditz", "Babidi", "Majin Buu", "Bills", "Whis", "Zeno", "Kibito-Shin", "Jiren",
-             "Toppo", "Dyspo", "Marcarita", "Vermoudh", "Grand Priest", "Kaio del norte (Kaito)", "Android 18",
-             "Gogeta", "Vegetto", "Janemba", "Broly", "Kaio del Sur", "Kaio del este", "Kaio del Oeste", "Gran Kaio",
-             "Kaio-shin del Este", "Kaio-shin del Norte", "Kaio-shin del Sur", "Kaio-shin del Oeste", "Gran Kaio-shin",
-             "Kibito"]
+from choose import *
 
 app = Flask(__name__)
 CORS(app)
     
-@app.route('/jogar', methods=['GET'])
+@app.route('/iniciar', methods=['GET'])
 def jogar():
     
     base_url = "https://dragonball-api.com/api/characters/"   

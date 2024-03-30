@@ -38,11 +38,11 @@ function selectInput(list){
   inputBox.value = list.innerHTML;
   resultBox.innerHTML = "";
 }
-function enviarRequisicao() {
+function iniciarGame() {
 
   const xhr = new XMLHttpRequest();
 
-  xhr.open('GET', 'http://localhost:5000/jogar');
+  xhr.open('GET', 'http://localhost:5000/iniciar');
 
   xhr.setRequestHeader('Content-Type', 'application/json');
 
@@ -52,14 +52,17 @@ function enviarRequisicao() {
     if (xhr.status === 200) {
       const resposta = JSON.parse(xhr.responseText);
       document.querySelector(".section").style.display = "none";
+      document.querySelector(".search_box").style.display = "block";
       document.querySelector(".header").style.display = "flex";
-      document.querySelector(".grid").style.display = "flex";
       document.querySelector(".header_content_characteristics").style.display = "flex";
       document.querySelector(".response_line").style.display = "flex";
       console.log(resposta); 
-      
     } else {
       console.error('Erro na requisição:', xhr.status, xhr.statusText);
     }
   };
+}
+
+function teste(character){
+  console.log(character)
 }
