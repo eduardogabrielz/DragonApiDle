@@ -17,8 +17,8 @@ inputBox.onkeyup = function () {
     result = characters.filter((keyword) => {
       return keyword.toLowerCase().includes(input.toLowerCase());
     });
-    console.log(result)
   }
+  
   display(result);
 
   if(!result.length){
@@ -37,4 +37,29 @@ function display(result){
 function selectInput(list){
   inputBox.value = list.innerHTML;
   resultBox.innerHTML = "";
+}
+function enviarRequisicao() {
+
+  const xhr = new XMLHttpRequest();
+
+  xhr.open('GET', 'http://localhost:5000/jogar');
+
+  xhr.setRequestHeader('Content-Type', 'application/json');
+
+  xhr.send();
+
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      const resposta = JSON.parse(xhr.responseText);
+      document.querySelector(".section").style.display = "none";
+      document.querySelector(".header").style.display = "flex";
+      document.querySelector(".grid").style.display = "flex";
+      document.querySelector(".header_content_characteristics").style.display = "flex";
+      document.querySelector(".response_line").style.display = "flex";
+      console.log(resposta); 
+      
+    } else {
+      console.error('Erro na requisição:', xhr.status, xhr.statusText);
+    }
+  };
 }

@@ -11,38 +11,47 @@
 
 <body>
 
-  <header>
+
+
+  <header class="header" style="display: none;">
     <a href="index.html"><img src="images/dragondle.png" alt="DragonDle"></a>
   </header>
 
-  <section>
-    <div class="helper">
-      <div>
-        <p id="content_information">
-          <span style="border: solid 3px #ff0000;" class="red_span"> </span>
-          <span style="margin-left : 3px;">
-            Vermelho:
-            <b>"Nenhuma"</b>
-            das pistas combina"
-          </span>
-        </p>
+  <section class="section" style="display: flex;">
+    <div class="how_to_play">
+      <div class="button">
+        <h1>Como Jogar</h1>
+        <span class="x" onclick="enviarRequisicao()">X</span>
       </div>
-      <div>
-        <p id="content_information">
-          <span style="border: solid 3px #38c418;" class="green_span"> </span>
-          <span style="margin-left : 3px;">
-            Verde:
-            <b>"TODAS"</b>
-            as pistas combinam"
-          </span>
-        </p>
-      </div>  
+      <div class="helper">
+        <div>
+          <p id="content_information">
+            <span style="border: solid 3px #ff0000;" class="red_span"> </span>
+            <span style="margin-left : 3px;">
+              Vermelho:
+              <b>"Nenhuma"</b>
+              das pistas combina"
+            </span>
+          </p>
+        </div>
+        <div>
+          <p id="content_information">
+            <span style="border: solid 3px #38c418;" class="green_span"> </span>
+            <span style="margin-left : 3px;">
+              Verde:
+              <b>"TODAS"</b>
+              as pistas combinam"
+            </span>
+          </p>
+        </div>
+      </div>
     </div>
+
   </section>
 
 
   <div class="mini_game">
-    <div class="grid">
+    <div class="grid" style="display: none;">
       <div style="display: flex;flex-wrap: wrap;justify-content: space-around;">
         <div class=" button-container">
           <input type="text" placeholder="🐉 Digite um Personagem " id="searchBox" autocomplete="off">
@@ -58,7 +67,7 @@
     </div>
   </div>
 
-  <div class="header_content_characteristics">
+  <div class="header_content_characteristics" style="display: none;">
     <div class="individual_characteristics">
       <b>
         <span>Personagem</span>
@@ -86,8 +95,7 @@
     </div>
   </div>
 
-
-  <div class="response_line">
+  <div class="response_line" style="display: none;">
     <div class="individual_response_line"></div>
     <div class="individual_response_line"></div>
     <div class="individual_response_line"></div>
