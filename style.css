@@ -207,7 +207,7 @@ input {
 }
 
 .result_box{
-    max-height: 300px;
+    max-height: 210px;
     overflow: auto;
 }
 
@@ -218,10 +218,10 @@ input {
 .result_box ul li {
     list-style: none;
     border-radius: 3px;
-    padding: 15px 10px;
+    padding: 15px 15px;
     cursor: pointer;
     &:hover {
-        background: #e9f3ff;
+        background: #e0ecfc;
     }
 }
 

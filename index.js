@@ -9,6 +9,7 @@ const characters = ['Goku', "Vegeta", "Piccolo", "Bulma", "Freeza", "Zarbon", "D
 
 const resultBox = document.querySelector(".result_box")
 const inputBox = document.getElementById("searchBox")
+const guessButton = document.querySelector(".guess_character")
 
 inputBox.onkeyup = function () {
   let result = []
@@ -18,23 +19,23 @@ inputBox.onkeyup = function () {
       return keyword.toLowerCase().includes(input.toLowerCase());
     });
   }
-  
+
   display(result);
 
-  if(!result.length){
+  if (!result.length) {
     resultBox.innerHTML = "";
   }
 }
 
-function display(result){
-  const content = result.map((list)=>{
+function display(result) {
+  const content = result.map((list) => {
     return "<li onclick=selectInput(this)>" + list + "</li>";
   });
 
   resultBox.innerHTML = "<ul>" + content.join('') + "</ul>"
 }
 
-function selectInput(list){
+function selectInput(list) {
   inputBox.value = list.innerHTML;
   resultBox.innerHTML = "";
 }
@@ -48,7 +49,7 @@ function iniciarGame() {
 
   xhr.send();
 
-  xhr.onload = function() {
+  xhr.onload = function () {
     if (xhr.status === 200) {
       const resposta = JSON.parse(xhr.responseText);
       document.querySelector(".section").style.display = "none";
@@ -56,13 +57,31 @@ function iniciarGame() {
       document.querySelector(".header").style.display = "flex";
       document.querySelector(".header_content_characteristics").style.display = "flex";
       document.querySelector(".response_line").style.display = "flex";
-      console.log(resposta); 
+      console.log(resposta);
     } else {
       console.error('Erro na requisição:', xhr.status, xhr.statusText);
     }
   };
 }
 
-function teste(character){
-  console.log(character)
-}
+guessButton.addEventListener("click", function () {
+  const userInput = searchBox.value;
+
+  const xhr = new XMLHttpRequest();
+
+  xhr.open('GET', 'http://localhost:5000/palpite/' + userInput);
+
+  xhr.setRequestHeader('Content-Type', 'application/json');
+
+  xhr.send();
+
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      const resposta = JSON.parse(xhr.responseText);
+      console.log(resposta);
+      searchBox.value = "";
+    } else {
+      console.error('Erro na requisição:', xhr.status, xhr.statusText);
+    }
+  };
+});

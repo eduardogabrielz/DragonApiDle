@@ -30,17 +30,16 @@ def jogar():
 
     return jsonify(data_json_character)
 
-@app.route('/palpite', methods=['GET'])
-def palpitar():
+@app.route("/palpite/<string:userInput>", methods=["GET"])
+def palpitar(userInput):
 
-    url_character = "https://dragonball-api.com/api/characters?name=goku"
-    
-    content = requests.get(url_character)
-    character_data = content.json()
-    
-    data_json_character= translate_character(choose_features_tips(character_data))
+  url_character = f"https://dragonball-api.com/api/characters?name={userInput}"
+  content = requests.get(url_character)
+  character_data = content.json()
 
-    return jsonify(data_json_character)
+  data_json_character = translate_character(choose_features_tips(character_data))
+
+  return jsonify(data_json_character)
 
 if __name__ == '__main__':
   app.run(port=5000, host='localhost', debug=True)
