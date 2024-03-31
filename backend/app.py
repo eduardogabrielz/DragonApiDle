@@ -3,6 +3,7 @@ from flask_cors import CORS
 import requests
 import random
 from translations import *
+from detranslation import *
 from choose import *
 
 app = Flask(__name__)
@@ -33,7 +34,8 @@ def jogar():
 @app.route("/palpite/<string:userInput>", methods=["GET"])
 def palpitar(userInput):
 
-  url_character = f"https://dragonball-api.com/api/characters?name={userInput}"
+  guess_character = destranslation_character(userInput)
+  url_character = f"https://dragonball-api.com/api/characters?name={guess_character}"
   content = requests.get(url_character)
   character_data = content.json()
 
