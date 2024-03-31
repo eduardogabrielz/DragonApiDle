@@ -250,13 +250,19 @@ input {
     text-shadow: 2px -2px #ffffff;
 }
 
-.response_line {
+.response_line1,
+.response_line2,
+.response_line3,
+.response_line4,
+.response_line5 {
     display: none;
     flex-wrap: nowrap;
     justify-content: center;
     column-gap: 16px;
     margin-top: 16px;
 }
+
+
 
 .individual_response_line {
     background-color: #333;
@@ -282,7 +288,6 @@ input {
 
 .image_character {
     height: 100%;
-    width: 60%;
 }
 
 .tip_character{
