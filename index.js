@@ -77,6 +77,7 @@ function createModalCorrect(message) {
     const modal = document.querySelector('.modal');
     if (modal) {
       modal.parentNode.removeChild(modal);
+      inputBox.setAttribute('readonly', true);
     }
   });
 
@@ -130,6 +131,7 @@ function createModalWrong(message){
     const modal = document.querySelector('.modal');
     if (modal) {
       modal.parentNode.removeChild(modal);
+      inputBox.setAttribute('readonly', true);
     }
   });
 
@@ -139,7 +141,14 @@ function createModalWrong(message){
 
   const closeButton = document.createElement('button');
   closeButton.classList.add('modal_close');
-  closeButton.textContent = 'Reiniciar';
+  closeButton.textContent = 'Tentar Novamente!';
+  closeButton.addEventListener('click', function closeModal() {
+    const modal = document.querySelector('.modal');
+    if (modal) {
+      modal.parentNode.removeChild(modal);  
+      location.reload();
+    }
+  });
 
   contentDiv.appendChild(messageContainer);
   contentDiv.appendChild(contentContainer);
