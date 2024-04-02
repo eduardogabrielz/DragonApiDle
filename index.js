@@ -74,6 +74,12 @@ function createModalCorrect(message) {
   const closeSpan = document.createElement('span');
   closeSpan.classList.add('x');
   closeSpan.textContent = 'X';
+  closeSpan.addEventListener('click', function closeModal() {
+    const modal = document.querySelector('.modal');
+    if (modal) {
+      modal.parentNode.removeChild(modal);
+    }
+  });
 
   messageContainer.appendChild(messageParagraph);
   messageContainer.appendChild(closeSpan);
@@ -81,13 +87,7 @@ function createModalCorrect(message) {
 
   const closeButton = document.createElement('button');
   closeButton.classList.add('modal_close');
-  closeButton.textContent = 'Fechar';
-  closeButton.addEventListener('click', function closeModal() {
-    const modal = document.querySelector('.modal');
-    if (modal) {
-      modal.parentNode.removeChild(modal);
-    }
-  });
+  closeButton.textContent = 'Reiniciar';
 
   contentDiv.appendChild(messageContainer);
   contentDiv.appendChild(contentContainer);
@@ -114,22 +114,26 @@ function createModalWrong(message){
   messageParagraph.id = 'mensagem';
   messageParagraph.textContent = message;
 
+  const contentParagraph = document.createElement('p');
+  contentParagraph.textContent = `O personagem era: ${character.nome}`
+
   const closeSpan = document.createElement('span');
   closeSpan.classList.add('x');
   closeSpan.textContent = 'X';
-
-  messageContainer.appendChild(messageParagraph);
-  messageContainer.appendChild(closeSpan);
-  
-  const closeButton = document.createElement('button');
-  closeButton.classList.add('modal_close');
-  closeButton.textContent = 'Fechar';
-  closeButton.addEventListener('click', function closeModal() {
+  closeSpan.addEventListener('click', function closeModal() {
     const modal = document.querySelector('.modal');
     if (modal) {
       modal.parentNode.removeChild(modal);
     }
   });
+
+  messageContainer.appendChild(messageParagraph);
+  messageContainer.appendChild(closeSpan);
+  contentContainer.appendChild(contentParagraph);
+
+  const closeButton = document.createElement('button');
+  closeButton.classList.add('modal_close');
+  closeButton.textContent = 'Reiniciar';
 
   contentDiv.appendChild(messageContainer);
   contentDiv.appendChild(contentContainer);
