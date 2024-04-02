@@ -53,7 +53,6 @@ function selectInput(list) {
 
 function guess_character(tip_character, character) {
   responseLineCount++;
-
   const fields = ["imagem", "nome", "raça", "afiliação", "genero"];
 
   const responseLineDiv = document.querySelector(`.response_line${responseLineCount}`);
@@ -63,34 +62,24 @@ function guess_character(tip_character, character) {
     const div = document.createElement('div');
     div.classList.add('individual_response_line');
 
-    const tipValue = tip_character[field];
-    const characterValue = character[field];
-
-    const content = document.createElement('p');
-    content.classList.add('tip_character');
+    const content = document.createElement(field === "imagem" ? 'img' : 'p');
+    content.classList.add(field === "imagem" ? 'image_character' : 'tip_character');
 
     if (field === "imagem") {
-      const imageCharacter = document.createElement('img');
-      imageCharacter.classList.add('image_character');
-      imageCharacter.src = tipValue;
-      imageCharacter.alt = "Personagem do palpite";
-
-      div.appendChild(imageCharacter);
+      content.src = tip_character[field];
+      content.alt = "Personagem do palpite";
     } else {
-      content.textContent = `${tipValue}`;
-
-      if (tipValue === characterValue) {
-        div.id = 'correct';
-      } else {
-        div.id = 'wrong';
-      }
-
-      div.appendChild(content);
+      content.textContent = tip_character[field];
     }
 
+    div.id = tip_character[field] === character[field] ? 'correct' : 'wrong';
+
+    div.appendChild(content);
     responseLineDiv.appendChild(div);
   }
 }
+
+
 
 function iniciarGame() {
 
