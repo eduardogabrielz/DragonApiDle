@@ -91,7 +91,7 @@ function createModal(message) {
 
 function guess_character(tip_character, character) {
   responseLineCount++;
-  const fields = ["imagem", "nome", "raça", "afiliação", "genero"];
+  const fields = ["imagem", "nome", "genero", "raça", "afiliação"];
 
   const responseLineDiv = document.querySelector(`.response_line${responseLineCount}`);
   responseLineDiv.style.display = 'flex';
