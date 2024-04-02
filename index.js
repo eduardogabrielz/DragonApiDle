@@ -161,7 +161,7 @@ function createModalWrong(message){
 function guess_character(tip_character, character) {
   responseLineCount++;
 
-  const fields = ["imagem", "nome", "genero", "raça", "afiliação"];
+  const fields = ["imagem", "nome", "genero", "raça", "afiliação", "Ki"];
 
   const responseLineDiv = document.querySelector(`.response_line${responseLineCount}`);
   responseLineDiv.style.display = 'flex';
@@ -218,7 +218,6 @@ function iniciarGame() {
       document.querySelector(".header").style.display = "flex";
       document.querySelector(".header_content_characteristics").style.display = "flex";
       character = resposta;
-      console.log(character);
     } else {
       console.error('Erro na requisição:', xhr.status, xhr.statusText);
     }

@@ -55,5 +55,6 @@ def translate_character(character):
   translated["raça"] = translation_races.get(character["raça"], character["raça"])
   translated["afiliação"] = translation_affiliations.get(character["afiliação"], character["afiliação"])
   translated["imagem"] = character["imagem"]
+  translated["Ki"] = character["Ki"]
   
   return translated
