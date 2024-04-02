@@ -295,3 +295,11 @@ input {
     font-size: 12px;
     font-family: "Secular One";
 }
+
+#correct{
+    background-color: #008000;
+}
+
+#wrong{
+    background-color: #ff0000;
+}

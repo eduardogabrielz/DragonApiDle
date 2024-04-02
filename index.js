@@ -14,6 +14,14 @@ let character = "";
 let tip_character = "";
 let responseLineCount = 0;
 
+
+function removeCharacter(characterName) {
+  const characterIndex = characters.indexOf(characterName);
+  if (characterIndex !== -1) {
+    characters.splice(characterIndex, 1);
+  }
+}
+
 inputBox.onkeyup = function () {
   let result = []
   let input = inputBox.value;
@@ -43,61 +51,45 @@ function selectInput(list) {
   resultBox.innerHTML = "";
 }
 
-function guess_character(character){
-  
+function guess_character(tip_character, character) {
   responseLineCount++;
-  
-  const div_image = document.createElement('div');
-  div_image.classList.add('individual_response_line');
 
-  const div_name = document.createElement('div');
-  div_name.classList.add('individual_response_line');
-
-  const div_gender = document.createElement('div');
-  div_gender.classList.add('individual_response_line');
-
-  const div_race = document.createElement('div');
-  div_race.classList.add('individual_response_line');
-
-  const div_afiliation = document.createElement('div');
-  div_afiliation.classList.add('individual_response_line');
-  
-  const imageCharacter = document.createElement('img');
-  imageCharacter.classList.add('image_character');
-  imageCharacter.src = character.imagem;
-  imageCharacter.alt = "Personagem do palpite";
-
-  const nameCharacter = document.createElement('p');
-  nameCharacter.classList.add('tip_character');
-  nameCharacter.textContent = character.nome;
-
-  const genderCharacter = document.createElement('p');
-  genderCharacter.classList.add('tip_character');
-  genderCharacter.textContent = character.genero;
-
-  const raceCharacter = document.createElement('p');
-  raceCharacter.classList.add('tip_character');
-  raceCharacter.textContent = character.raça;
-
-  const afiliationCharacter = document.createElement('p');
-  afiliationCharacter.classList.add('tip_character');
-  afiliationCharacter.textContent = character.afiliação;
-
-  div_image.appendChild(imageCharacter);
-  div_name.appendChild(nameCharacter);
-  div_gender.appendChild(genderCharacter);
-  div_race.appendChild(raceCharacter);
-  div_afiliation.appendChild(afiliationCharacter);
+  const fields = ["imagem", "nome", "raça", "afiliação", "genero"];
 
   const responseLineDiv = document.querySelector(`.response_line${responseLineCount}`);
-  
-  responseLineDiv.appendChild(div_image);
-  responseLineDiv.appendChild(div_name);
-  responseLineDiv.appendChild(div_gender);
-  responseLineDiv.appendChild(div_race);
-  responseLineDiv.appendChild(div_afiliation);
-
   responseLineDiv.style.display = 'flex';
+
+  for (const field of fields) {
+    const div = document.createElement('div');
+    div.classList.add('individual_response_line');
+
+    const tipValue = tip_character[field];
+    const characterValue = character[field];
+
+    const content = document.createElement('p');
+    content.classList.add('tip_character');
+
+    if (field === "imagem") {
+      const imageCharacter = document.createElement('img');
+      imageCharacter.classList.add('image_character');
+      imageCharacter.src = tipValue;
+      imageCharacter.alt = "Personagem do palpite";
+
+      div.appendChild(imageCharacter);
+    } else {
+      content.textContent = `${tipValue}`;
+
+      if (tipValue === characterValue) {
+        div.id = 'correct';
+      } else {
+        div.id = 'wrong';
+      }
+
+      div.appendChild(content);
+    }
+
+    responseLineDiv.appendChild(div);
+  }
 }
 
 function iniciarGame() {
@@ -118,7 +110,7 @@ function iniciarGame() {
       document.querySelector(".header").style.display = "flex";
       document.querySelector(".header_content_characteristics").style.display = "flex";
       character = resposta;
-      console.log(resposta);
+      console.log(character);
     } else {
       console.error('Erro na requisição:', xhr.status, xhr.statusText);
     }
@@ -138,11 +130,11 @@ guessButton.addEventListener("click", function () {
 
   xhr.onload = function () {
     if (xhr.status === 200) {
-      const resposta = JSON.parse(xhr.responseText);
-      tip_character = resposta;
+      const tip_character = JSON.parse(xhr.responseText);
       searchBox.value = "";
       console.log(tip_character)
-      guess_character(tip_character);
+      removeCharacter(tip_character.nome); 
+      guess_character(tip_character, character);
     } else {
       console.error('Erro na requisição:', xhr.status, xhr.statusText);
     }
