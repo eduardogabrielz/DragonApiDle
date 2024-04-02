@@ -51,19 +51,19 @@ function selectInput(list) {
   resultBox.innerHTML = "";
 }
 
-function createModal(message) {
+function createModalCorrect(message) {
   const modalDiv = document.createElement('div');
   modalDiv.classList.add('modal');
 
   const contentDiv = document.createElement('div');
   contentDiv.classList.add('modal_content');
 
-  const messageContainer = document.createElement('div'); 
+  const messageContainer = document.createElement('div');
   messageContainer.classList.add('grid_close_message');
 
-  const contentContainer = document.createElement('div'); 
+  const contentContainer = document.createElement('div');
   contentContainer.classList.add('grid_message');
-  
+
   const messageParagraph = document.createElement('p');
   messageParagraph.id = 'mensagem';
   messageParagraph.textContent = message;
@@ -82,7 +82,49 @@ function createModal(message) {
   const closeButton = document.createElement('button');
   closeButton.classList.add('modal_close');
   closeButton.textContent = 'Fechar';
-  closeButton.addEventListener('click', function closeModal(){
+  closeButton.addEventListener('click', function closeModal() {
+    const modal = document.querySelector('.modal');
+    if (modal) {
+      modal.parentNode.removeChild(modal);
+    }
+  });
+
+  contentDiv.appendChild(messageContainer);
+  contentDiv.appendChild(contentContainer);
+  contentDiv.appendChild(closeButton);
+  modalDiv.appendChild(contentDiv);
+  document.body.appendChild(modalDiv);
+
+}
+
+function createModalWrong(message){
+  const modalDiv = document.createElement('div');
+  modalDiv.classList.add('modal');
+
+  const contentDiv = document.createElement('div');
+  contentDiv.classList.add('modal_content');
+
+  const messageContainer = document.createElement('div');
+  messageContainer.classList.add('grid_close_message');
+
+  const contentContainer = document.createElement('div');
+  contentContainer.classList.add('grid_message');
+
+  const messageParagraph = document.createElement('p');
+  messageParagraph.id = 'mensagem';
+  messageParagraph.textContent = message;
+
+  const closeSpan = document.createElement('span');
+  closeSpan.classList.add('x');
+  closeSpan.textContent = 'X';
+
+  messageContainer.appendChild(messageParagraph);
+  messageContainer.appendChild(closeSpan);
+  
+  const closeButton = document.createElement('button');
+  closeButton.classList.add('modal_close');
+  closeButton.textContent = 'Fechar';
+  closeButton.addEventListener('click', function closeModal() {
     const modal = document.querySelector('.modal');
     if (modal) {
       modal.parentNode.removeChild(modal);
@@ -100,43 +142,43 @@ function createModal(message) {
 function guess_character(tip_character, character) {
   responseLineCount++;
 
-  if(responseLineCount <= 5 ){
-    const fields = ["imagem", "nome", "genero", "raça", "afiliação"];
+  const fields = ["imagem", "nome", "genero", "raça", "afiliação"];
 
-    const responseLineDiv = document.querySelector(`.response_line${responseLineCount}`);
-    responseLineDiv.style.display = 'flex';
-  
-    for (const field of fields) {
-      const div = document.createElement('div');
-      div.classList.add('individual_response_line');
-  
-      const content = document.createElement(field === "imagem" ? 'img' : 'p');
-      content.classList.add(field === "imagem" ? 'image_character' : 'tip_character');
-  
-      if (field === "imagem") {
-        content.src = tip_character[field];
-        content.alt = "Personagem do palpite";
-      } else {
-        content.textContent = tip_character[field];
-      }
-  
-      div.id = tip_character[field] === character[field] ? 'correct' : 'wrong';
-  
-      div.appendChild(content);
-      responseLineDiv.appendChild(div);
+  const responseLineDiv = document.querySelector(`.response_line${responseLineCount}`);
+  responseLineDiv.style.display = 'flex';
+
+  for (const field of fields) {
+    const div = document.createElement('div');
+    div.classList.add('individual_response_line');
+
+    const content = document.createElement(field === "imagem" ? 'img' : 'p');
+    content.classList.add(field === "imagem" ? 'image_character' : 'tip_character');
+
+    if (field === "imagem") {
+      content.src = tip_character[field];
+      content.alt = "Personagem do palpite";
+    } else {
+      content.textContent = tip_character[field];
     }
-  
-    const allCorrect = Array.from(responseLineDiv.querySelectorAll('.individual_response_line'))
-      .every(element => element.id === 'correct');
-  
-    if (allCorrect) {
-      createModal('Que Bom!');
-    }
+
+    div.id = tip_character[field] === character[field] ? 'correct' : 'wrong';
+
+    div.appendChild(content);
+    responseLineDiv.appendChild(div);
+
   }
-  else{
-    console.log('TESTE')
+
+  const allCorrect = Array.from(responseLineDiv.querySelectorAll('.individual_response_line'))
+    .every(element => element.id === 'correct');
+
+  if (allCorrect) {
+    createModalCorrect('Que Bom!');
   }
-  
+
+  if (responseLineCount === 5) {
+    createModalWrong('Que Pena!')
+  }
+
 }
 
 function iniciarGame() {
@@ -179,8 +221,7 @@ guessButton.addEventListener("click", function () {
     if (xhr.status === 200) {
       const tip_character = JSON.parse(xhr.responseText);
       searchBox.value = "";
-      console.log(tip_character)
-      removeCharacter(tip_character.nome); 
+      removeCharacter(tip_character.nome);
       guess_character(tip_character, character);
     } else {
       console.error('Erro na requisição:', xhr.status, xhr.statusText);
