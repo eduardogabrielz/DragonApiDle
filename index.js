@@ -77,9 +77,14 @@ function guess_character(tip_character, character) {
     div.appendChild(content);
     responseLineDiv.appendChild(div);
   }
+
+  const allCorrect = Array.from(responseLineDiv.querySelectorAll('.individual_response_line'))
+    .every(element => element.id === 'correct');
+
+  if (allCorrect) {
+    console.log('vitoria'); 
+  }
 }
-
-
 
 function iniciarGame() {
 
