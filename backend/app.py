@@ -14,7 +14,7 @@ def jogar():
     
     base_url = "https://dragonball-api.com/api/characters/"   
     
-    invalid_ids = [62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 41, 36]
+    invalid_ids = [78, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 41, 36]
 
     while True:
         random_number = random.randint(1, 78)

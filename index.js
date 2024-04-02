@@ -4,8 +4,7 @@ const characters = ['Goku', "Vegeta", "Piccolo", "Bulma", "Freeza", "Zarbon", "D
   "Android 15", "Nail", "Raditz", "Babidi", "Majin Buu", "Bills", "Whis", "Zeno", "Kibito-Shin", "Jiren",
   "Toppo", "Dyspo", "Marcarita", "Vermoudh", "Sumo Sacerdote", "Kaioh do Norte", "Android 18",
   "Gogeta", "Vegetto", "Janemba", "Broly", "Kaioh do Sul", "Kaioh do Leste", "Kaioh do Oeste", "Grande Kaioh",
-  "Kaiohshin do Leste", "Kaiohshin do Norte", "Kaiohshin do Sul", "Kaiohshin do Oeste", "Grande Kaiohshin",
-  "Kibito"];
+  "Kaiohshin do Leste", "Kaiohshin do Norte", "Kaiohshin do Sul", "Kaiohshin do Oeste", "Grande Kaiohshin"];
 
 const resultBox = document.querySelector(".result_box")
 const inputBox = document.getElementById("searchBox")
@@ -88,6 +87,13 @@ function createModalCorrect(message) {
   const closeButton = document.createElement('button');
   closeButton.classList.add('modal_close');
   closeButton.textContent = 'Reiniciar';
+  closeButton.addEventListener('click', function closeModal() {
+    const modal = document.querySelector('.modal');
+    if (modal) {
+      modal.parentNode.removeChild(modal);  
+      location.reload();
+    }
+  });
 
   contentDiv.appendChild(messageContainer);
   contentDiv.appendChild(contentContainer);
