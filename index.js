@@ -60,10 +60,16 @@ function createModal(message) {
 
   const messageContainer = document.createElement('div'); 
   messageContainer.classList.add('grid_close_message');
+
+  const contentContainer = document.createElement('div'); 
+  contentContainer.classList.add('grid_message');
   
   const messageParagraph = document.createElement('p');
   messageParagraph.id = 'mensagem';
   messageParagraph.textContent = message;
+
+  const contentParagraph = document.createElement('p');
+  contentParagraph.textContent = `Numero de tentativas: ${responseLineCount}`
 
   const closeSpan = document.createElement('span');
   closeSpan.classList.add('x');
@@ -71,6 +77,7 @@ function createModal(message) {
 
   messageContainer.appendChild(messageParagraph);
   messageContainer.appendChild(closeSpan);
+  contentContainer.appendChild(contentParagraph);
 
   const closeButton = document.createElement('button');
   closeButton.classList.add('modal_close');
@@ -83,6 +90,7 @@ function createModal(message) {
   });
 
   contentDiv.appendChild(messageContainer);
+  contentDiv.appendChild(contentContainer);
   contentDiv.appendChild(closeButton);
   modalDiv.appendChild(contentDiv);
   document.body.appendChild(modalDiv);
@@ -91,37 +99,44 @@ function createModal(message) {
 
 function guess_character(tip_character, character) {
   responseLineCount++;
-  const fields = ["imagem", "nome", "raça", "afiliação", "genero"];
 
-  const responseLineDiv = document.querySelector(`.response_line${responseLineCount}`);
-  responseLineDiv.style.display = 'flex';
+  if(responseLineCount <= 5 ){
+    const fields = ["imagem", "nome", "genero", "raça", "afiliação"];
 
-  for (const field of fields) {
-    const div = document.createElement('div');
-    div.classList.add('individual_response_line');
-
-    const content = document.createElement(field === "imagem" ? 'img' : 'p');
-    content.classList.add(field === "imagem" ? 'image_character' : 'tip_character');
-
-    if (field === "imagem") {
-      content.src = tip_character[field];
-      content.alt = "Personagem do palpite";
-    } else {
-      content.textContent = tip_character[field];
+    const responseLineDiv = document.querySelector(`.response_line${responseLineCount}`);
+    responseLineDiv.style.display = 'flex';
+  
+    for (const field of fields) {
+      const div = document.createElement('div');
+      div.classList.add('individual_response_line');
+  
+      const content = document.createElement(field === "imagem" ? 'img' : 'p');
+      content.classList.add(field === "imagem" ? 'image_character' : 'tip_character');
+  
+      if (field === "imagem") {
+        content.src = tip_character[field];
+        content.alt = "Personagem do palpite";
+      } else {
+        content.textContent = tip_character[field];
+      }
+  
+      div.id = tip_character[field] === character[field] ? 'correct' : 'wrong';
+  
+      div.appendChild(content);
+      responseLineDiv.appendChild(div);
     }
-
-    div.id = tip_character[field] === character[field] ? 'correct' : 'wrong';
-
-    div.appendChild(content);
-    responseLineDiv.appendChild(div);
+  
+    const allCorrect = Array.from(responseLineDiv.querySelectorAll('.individual_response_line'))
+      .every(element => element.id === 'correct');
+  
+    if (allCorrect) {
+      createModal('Que Bom!');
+    }
   }
-
-  const allCorrect = Array.from(responseLineDiv.querySelectorAll('.individual_response_line'))
-    .every(element => element.id === 'correct');
-
-  if (allCorrect) {
-    createModal('Vitoria');
+  else{
+    console.log('TESTE')
   }
+  
 }
 
 function iniciarGame() {
