@@ -13,7 +13,7 @@ detranslation_names = {
     "Kaiohshin do Norte": "Kaio-shin del Norte",
     "Kaiohshin do Sul": "Kaio-shin del Sur",
     "Kaiohshin do Oeste": "Kaio-shin del Oeste",
-    "Grande Kaioshin": "Gran Kaio-shin",
+    "Grande Kaiohshin": "Gran Kaio-shin",
 }
 
 def destranslation_character(character):

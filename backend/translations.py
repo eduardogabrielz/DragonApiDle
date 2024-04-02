@@ -43,8 +43,8 @@ translation_names = {
     "Kaio-shin del Este" : "Kaiohshin do Leste",
     "Kaio-shin del Norte" : "Kaiohshin do Norte",
     "Kaio-shin del Sur" : "Kaiohshin do Sul",
-    "Kaio-shin del Oeste" : "Kaioshin do Oeste",
-    "Gran Kaio-shin" : "Grande Kaioshin"
+    "Kaio-shin del Oeste" : "Kaiohshin do Oeste",
+    "Gran Kaio-shin" : "Grande Kaiohshin"
 }
 
 def translate_character(character):

@@ -4,7 +4,7 @@ const characters = ['Goku', "Vegeta", "Piccolo", "Bulma", "Freeza", "Zarbon", "D
   "Android 15", "Nail", "Raditz", "Babidi", "Majin Buu", "Bills", "Whis", "Zeno", "Kibito-Shin", "Jiren",
   "Toppo", "Dyspo", "Marcarita", "Vermoudh", "Sumo Sacerdote", "Kaioh do Norte", "Android 18",
   "Gogeta", "Vegetto", "Janemba", "Broly", "Kaioh do Sul", "Kaioh do Leste", "Kaioh do Oeste", "Grande Kaioh",
-  "Kaioshin do Leste", "Kaioshin do Norte", "Kaioshin do Sul", "Kaioshin do Oeste", "Grande Kaioshin",
+  "Kaiohshin do Leste", "Kaiohshin do Norte", "Kaiohshin do Sul", "Kaiohshin do Oeste", "Grande Kaiohshin",
   "Kibito"];
 
 const resultBox = document.querySelector(".result_box")
@@ -51,6 +51,44 @@ function selectInput(list) {
   resultBox.innerHTML = "";
 }
 
+function createModal(message) {
+  const modalDiv = document.createElement('div');
+  modalDiv.classList.add('modal');
+
+  const contentDiv = document.createElement('div');
+  contentDiv.classList.add('modal_content');
+
+  const messageContainer = document.createElement('div'); 
+  messageContainer.classList.add('grid_close_message');
+  
+  const messageParagraph = document.createElement('p');
+  messageParagraph.id = 'mensagem';
+  messageParagraph.textContent = message;
+
+  const closeSpan = document.createElement('span');
+  closeSpan.classList.add('x');
+  closeSpan.textContent = 'X';
+
+  messageContainer.appendChild(messageParagraph);
+  messageContainer.appendChild(closeSpan);
+
+  const closeButton = document.createElement('button');
+  closeButton.classList.add('modal_close');
+  closeButton.textContent = 'Fechar';
+  closeButton.addEventListener('click', function closeModal(){
+    const modal = document.querySelector('.modal');
+    if (modal) {
+      modal.parentNode.removeChild(modal);
+    }
+  });
+
+  contentDiv.appendChild(messageContainer);
+  contentDiv.appendChild(closeButton);
+  modalDiv.appendChild(contentDiv);
+  document.body.appendChild(modalDiv);
+
+}
+
 function guess_character(tip_character, character) {
   responseLineCount++;
   const fields = ["imagem", "nome", "raça", "afiliação", "genero"];
@@ -82,7 +120,7 @@ function guess_character(tip_character, character) {
     .every(element => element.id === 'correct');
 
   if (allCorrect) {
-    console.log('vitoria'); 
+    createModal('Vitoria');
   }
 }
 

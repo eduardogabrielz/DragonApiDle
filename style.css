@@ -103,18 +103,17 @@ section {
     border: 1px solid #ffffff;
 }
 
-.button {
+.grid_close_message {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 15px;
 }
 
-.button h1 {
+.grid_close_message h1 {
     color: #ffffff;
     font-family: "Secular One";
-    margin-right: auto;
-    margin-left: 80px;
+    margin: 0 auto;
 }
 
 .x {
@@ -126,7 +125,7 @@ section {
     align-items: center;
     width: 30px;
     height: 30px;
-    margin-right: 25px;
+    margin: 0 auto;
     background-color: #ff0000;
     &:hover {
         background-color: #880505;
@@ -302,4 +301,47 @@ input {
 
 #wrong{
     background-color: #ff0000;
+}
+
+.modal {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    width: 320px;
+    height: 200px;
+    background-color: black;
+    color: white;
+    border-radius: 40px;
+    border: 1px solid white;
+}
+
+.modal_content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#mensagem{
+    font-size: 20px;
+    font-family: "DragonBall";
+    color: #fff;
+    margin: 0 auto;
+}
+
+.modal_close {
+    font-family: "DragonBall";
+    border-radius: 4px;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background: #0f0874;
+    color: #ffffff;
+    height: 40px;
+    width: 80px;
+    margin: 0 auto;
+    margin-top: 40px;
 }
