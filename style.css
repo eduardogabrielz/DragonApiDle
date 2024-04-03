@@ -167,6 +167,7 @@ section {
 }
 
 .search_box{
+    position: relative;
     display: none;
     width: 400px;
     background: #fff;
@@ -205,10 +206,16 @@ input {
     width: 80px;
 }
 
-.result_box{
+.result_box {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: white;
     max-height: 210px;
     overflow: auto;
-}
+  }
 
 .result_box ul {
     padding: 15px 10px;
