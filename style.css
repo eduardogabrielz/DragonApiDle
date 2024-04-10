@@ -65,6 +65,8 @@ body {
     border: 10px solid #ff7200;
     border-radius: 10px;
     background-color: #f8f6d7;
+    box-shadow: 0 0 15px #ff7200, inset 0 0 10px #ff7200;
+    
 }
 
 .students {
@@ -181,6 +183,8 @@ section {
     display: flex;
     align-items: center;
     padding: 10px 20px;
+    border: 1px solid #f9fafa;
+    box-shadow: 0 0 15px #fafcfb, inset 0 0 15px #fafcfb;
 }
 
 input {
