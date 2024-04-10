@@ -309,13 +309,45 @@ input {
 #correct{
     background-color: #008000;
     border: 1px solid #03fd39;
-    box-shadow: 0 0 15px #03fd39, inset 0 0 15px #03fd39 ;
+    /*box-shadow: 0 0 15px #03fd39, inset 0 0 15px #03fd39 ; */
+    animation: animatecorrect 5s linear infinite
+}
+
+@keyframes animatecorrect{
+
+    0%, 30%, 60%{
+        box-shadow: none
+    }
+
+    10%, 50%, 65%, 80%, 100%
+    {
+        box-shadow: 0 0 5px #03fd39, inset 0 0 5px #03fd39,
+        0 0 10px #03fd39, inset 0 0 10px #03fd39,
+        0 0 15px #03fd39, inset 0 0 15px #03fd39,
+        0 0 20px #03fd39, inset 0 0 10px #03fd39 ;
+    }
 }
 
 #wrong{
     background-color: #ff0000;
     border: 1px solid #ffeb3c;
-    box-shadow: 0 0 15px #ffeb3c, inset 0 0 15px #ffeb3c;
+    animation: animateincorrect 5s linear infinite
+    /*box-shadow: 0 0 15px #ffeb3c, inset 0 0 15px #ffeb3c;*/
+}
+
+@keyframes animateincorrect{
+
+    0%, 30%, 60%{
+        box-shadow: none
+    }
+
+    10%, 50%, 65%, 80%, 100%
+    {
+        box-shadow:0 0 5px #ffeb3c, inset 0 0 15px #ffeb3c,
+        0 0 10px #ffeb3c, inset 0 0 15px #ffeb3c,
+        0 0 15px #ffeb3c, inset 0 0 15px #ffeb3c,
+        0 0 20px #ffeb3c, inset 0 0 15px #ffeb3c ;
+    }
 }
 
 .modal {
