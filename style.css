@@ -130,6 +130,8 @@ section {
     &:hover {
         background-color: #880505;
     }
+    border: 1px solid #ff0000;
+    box-shadow: 0 0 10px #ff0000, inset 0 0 10px #ff0000;
 }
 
 .helper {
@@ -276,7 +278,6 @@ input {
     position: relative;
     flex-basis: calc(12.5% - 4px);
     margin: 2px;
-    border: 1px solid #ffffff;
     box-sizing: border-box;
     min-width: 70px;
     font-size: 0.8em;
@@ -284,7 +285,6 @@ input {
     font-weight: 650 !important;
     border-radius: 8px !important;
     white-space: pre;
-    box-shadow: inset 0 0 5px #000000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -304,10 +304,14 @@ input {
 
 #correct{
     background-color: #008000;
+    border: 1px solid #03fd39;
+    box-shadow: 0 0 15px #03fd39, inset 0 0 15px #03fd39 ;
 }
 
 #wrong{
     background-color: #ff0000;
+    border: 1px solid #ffeb3c;
+    box-shadow: 0 0 15px #ffeb3c, inset 0 0 15px #ffeb3c;
 }
 
 .modal {
@@ -321,7 +325,8 @@ input {
     background-color: black;
     color: white;
     border-radius: 40px;
-    border: 1px solid white;
+    border: 1px solid #00ebc4;
+    box-shadow: 0 0 15px #00ebc4, inset 0 0 15px #00ebc4;
 }
 
 .modal_content {
@@ -351,6 +356,8 @@ input {
     width: 80px;
     margin: 0 auto;
     margin-top: 40px;
+    border: 1px solid #00ebc4;
+    box-shadow: 0 0 5px #00ebc4, inset 0 0 5px #00ebc4;
 }
 
 .grid_message {
