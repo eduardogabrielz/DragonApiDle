@@ -132,8 +132,6 @@ section {
     &:hover {
         background-color: #880505;
     }
-    border: 1px solid #ff0000;
-    box-shadow: 0 0 10px #ff0000, inset 0 0 10px #ff0000;
 }
 
 .helper {
@@ -303,13 +301,13 @@ input {
 .tip_character{
     color: #ffffff;
     font-size: 12px;
-    font-family: "Secular One";
+    font-family: "Secular One";   
+    text-shadow: 2px -1px #000000;
 }
 
 #correct{
     background-color: #008000;
     border: 1px solid #03fd39;
-    /*box-shadow: 0 0 15px #03fd39, inset 0 0 15px #03fd39 ; */
     animation: animatecorrect 5s linear infinite
 }
 
@@ -321,18 +319,17 @@ input {
 
     10%, 50%, 65%, 80%, 100%
     {
-        box-shadow: 0 0 5px #03fd39, inset 0 0 5px #03fd39,
-        0 0 10px #03fd39, inset 0 0 10px #03fd39,
-        0 0 15px #03fd39, inset 0 0 15px #03fd39,
-        0 0 20px #03fd39, inset 0 0 10px #03fd39 ;
+        box-shadow:0 0 5px #03fd39, inset 0 0 5px #03fd39,
+        0 0 2px #03fd39, inset 0 0 2px #03fd39,
+        0 0 5px #03fd39, inset 0 0 5px #03fd39,
+        0 0 7px #03fd39, inset 0 0 7px #03fd39 ;
     }
 }
 
 #wrong{
     background-color: #ff0000;
-    border: 1px solid #ffeb3c;
+    border: 1px solid #fffb00;
     animation: animateincorrect 5s linear infinite
-    /*box-shadow: 0 0 15px #ffeb3c, inset 0 0 15px #ffeb3c;*/
 }
 
 @keyframes animateincorrect{
@@ -343,10 +340,10 @@ input {
 
     10%, 50%, 65%, 80%, 100%
     {
-        box-shadow:0 0 5px #ffeb3c, inset 0 0 15px #ffeb3c,
-        0 0 10px #ffeb3c, inset 0 0 15px #ffeb3c,
-        0 0 15px #ffeb3c, inset 0 0 15px #ffeb3c,
-        0 0 20px #ffeb3c, inset 0 0 15px #ffeb3c ;
+        box-shadow:0 0 5px #fffb00, inset 0 0 5px #fffb00,
+        0 0 2px #fffb00, inset 0 0 2px #fffb00,
+        0 0 5px #fffb00, inset 0 0 5px #fffb00,
+        0 0 7px #fffb00, inset 0 0 7px #fffb00 ;
     }
 }
 
