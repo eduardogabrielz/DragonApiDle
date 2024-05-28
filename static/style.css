@@ -9,14 +9,14 @@
 
 @font-face {
     font-family: "DragonBall";
-    src: url(font/Saiyan-Sans.ttf) format('opentype');
+    src: url(/static/font/Saiyan-Sans.ttf) format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Secular One";
-    src: url(font/SecularOne-Regular.ttf) format('opentype');
+    src: url(/static/font/SecularOne-Regular.ttf) format('opentype');
     font-weight: normal;
     font-style: normal;
 }
@@ -34,7 +34,7 @@ footer {
 }
 
 body {
-    background-image: url(images/kame_house.jpeg);
+    background-image: url(/static/images/kame_house.jpeg);
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;

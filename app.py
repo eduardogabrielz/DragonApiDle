@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template 
 from flask_cors import CORS
 import requests
 import random
@@ -8,8 +8,15 @@ from choose import *
 
 app = Flask(__name__)
 CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
     
+@app.route('/')
+def homepage():
+   return render_template('index.html')
+
+@app.route('/guess_who.html')
+def guesswho():
+  return render_template('guess_who.html')
+
 @app.route('/iniciar', methods=['GET'])
 def jogar():
     
@@ -30,7 +37,9 @@ def jogar():
     
     data_json_character= translate_character(choose_features(character_data))
 
-    return jsonify(data_json_character)
+    response = jsonify(data_json_character)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 @app.route("/palpite/<string:userInput>", methods=["GET"])
 def palpitar(userInput):
