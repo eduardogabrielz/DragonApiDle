@@ -204,7 +204,7 @@ function iniciarGame() {
 
   const xhr = new XMLHttpRequest();
 
-  xhr.open('GET', 'http://localhost:5000/iniciar');
+  xhr.open('GET', 'http://127.0.0.1:5000/iniciar');
 
   xhr.setRequestHeader('Content-Type', 'application/json');
 
@@ -229,7 +229,7 @@ guessButton.addEventListener("click", function () {
 
   const xhr = new XMLHttpRequest();
 
-  xhr.open('GET', 'http://localhost:5000/palpite/' + userInput);
+  xhr.open('GET', 'http://127.0.0.1:5000/palpite/' + userInput);
 
   xhr.setRequestHeader('Content-Type', 'application/json');
 
