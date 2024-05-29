@@ -219,7 +219,7 @@ function iniciarGame() {
       document.querySelector(".header_content_characteristics").style.display = "flex";
       character = resposta;
     } else {
-      console.error('Erro na requisição:', xhr.status, xhr.statusText);
+      notification('Erro na requisição: ' +  xhr.status + "" + xhr.statusText);
     }
   };
 }
@@ -242,8 +242,23 @@ guessButton.addEventListener("click", function () {
       removeCharacter(tip_character.nome);
       guess_character(tip_character, character);
     } else {
-      console.error('Erro na requisição:', xhr.status, xhr.statusText);
+      notification('Informe um personagem válido');
     }
   };
 });
 
+function notification(e) {
+  const audio = new Audio('/static/audio/Error.mp3')
+  audio.play();
+  Toastify({
+    text: e,
+    duration: 5000,
+    className: "warn",
+    gravity: 'bottom',
+    style: {
+      background: "#ffffff",
+      color: "#000000",
+      border: "2px solid #0703fc"
+    }
+  }).showToast();
+}
